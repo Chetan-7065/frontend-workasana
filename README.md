@@ -1,70 +1,252 @@
-# Getting Started with Create React App
+# Workasana App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack work management app to organize, track, and manage projects and tasks from start to finish.<br>
+Built with react frontend, Express/Node backend , MongoDB database.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Demo Link
 
-### `npm start`
+[Link Demo](https://anvaya-crm-frontend-psi.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Quick Start
 
-### `npm test`
+```
+git clone https://github.com/Chetan-7065/-anvaya-crm-frontend.git
+cd <your-repo>
+npm install
+npm run dev # or `npm start` / `yarn dev`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+- React JS
+- React Router
+- Node JS
+- Express
+- MongoDB
+- Zest
+- JWT Auth
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Demo Video
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Watch a walkthrough (5 minutes) of all the major features of this app:<br/>
+[Loom Video](https://anvaya-crm-frontend-psi.vercel.app/)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Signup**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Register a new user with an email and password using JWT authentication.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Login**
 
-## Learn More
+- Authenticate user credentials (email and password) and generate a JWT.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Home**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Display the newest projects and tasks .
+- Quickly filter your tasks by their status using simple clickable buttons.
+- Add new projects and tasks with just a single click.
 
-### Code Splitting
+**Project**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- See a complete view of every project, including their name, description and total tasks.
+- Easily add new projects with just a single click .
 
-### Analyzing the Bundle Size
+**Project Details**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- See all details of a project including name , description and task details.
+- Assign team members or update project details.
 
-### Making a Progressive Web App
+**Reports**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Check quick pie chart to see the visual breakdown of completed tasks vs total number of tasks.
+- View clear bar charts showing task completed by team, tasks completed by owners and pending tasks.
 
-### Advanced Configuration
+**Team**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- View full details for every team with their name and members.
+- Easily add new team and add new members .
 
-### Deployment
+**Team Details**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- View all the details of specific team including the description and members.
+- Quickly add new team members with just a single click.
 
-### `npm run build` fails to minify
+**Task Details**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- View all the details of specific task including the name, team , project , owners , due on and status.
+- Toggle task completion status with a single click.
+
+**Setting**
+
+- Delete the specific task from the system permanently.
+- Download current tasks list into a CSV file.
+
+---
+
+## API Reference
+
+### Project API
+
+#### **Get /api/project**
+
+List all projects <br>
+Sample response <br>
+
+```
+[{id, name, description }, ...]
+```
+
+#### **Post /api/project**
+
+Easily add a new <br>
+Sample response <br>
+
+```
+{id, name, description }
+```
+
+### Team API
+
+#### **Get /api/team**
+
+List of all teams <br>
+Sample response <br>
+
+```
+[{id, name, description, members}, ...]
+```
+
+#### **Post /api/team**
+
+List of all teams <br>
+Sample response <br>
+
+```
+{id, name, description, members}
+```
+
+#### **Post /api/team/:teamId**
+
+Easily update a new team's information <br>
+Sample response <br>
+
+```
+{id, name, description, members}
+```
+
+### Tag API
+
+#### **Get /api/tag**
+
+List of all tags <br>
+Sample response <br>
+
+```
+[{id, tag}, ...]
+```
+
+#### **Post /api/tag**
+
+Easily add a new tag <br>
+Sample response <br>
+
+```
+{id, tag}
+```
+
+### Task API
+
+#### **Get /api/tasks**
+
+List of all tasks <br>
+Sample response <br>
+
+```
+[{id, name, project, team, owners, tags, dueDate, timeToComplete, status  }, ...]
+```
+
+#### **Post /api/tasks**
+
+Easily add a new task <br>
+Sample response <br>
+
+```
+{id, name, project, team, owners, tags, dueDate, timeToComplete, status}
+```
+
+#### **Post /api/tasks/:taskId**
+
+Easily update a new task's information<br>
+Sample response <br>
+
+```
+{id, name, project, team, owners, tags, dueDate, timeToComplete, status }
+```
+
+#### **Delete /api/tasks/:taskId**
+
+Easily delete a specific task<br>
+Sample response <br>
+
+```
+{id, name, project, team, owners, tags, dueDate, timeToComplete, status }
+```
+
+### Reports API
+
+#### **Get /api/report/last-week**
+
+list of tasks which are completed in the last week.<br>
+Sample response <br>
+
+```
+{id, name, source, agent, status, tags, timeToClose, priority}
+```
+
+#### **Get /api/report/pending**
+
+list of tasks which are not completed.<br>
+Sample response <br>
+
+```
+[{ totalTimePending, status},...]
+```
+
+
+#### **Get /api/report/closed-tasks**
+
+list of tasks which are not completed.<br>
+Sample response <br>
+
+```
+{
+    byTeam: [
+        {
+          totalCompleted, team
+        },...
+    ],
+    byOwners: [
+        {
+            totalCompleted, owner
+        },...
+    ],
+    byProject: [
+        {
+            totalCompleted, project
+        },...
+    ]
+}
+```
+
+## Contact
+
+For bugs or feature requests, please reach out to chetanpathak3055@gmail.com

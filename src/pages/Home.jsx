@@ -43,6 +43,7 @@ export default function Home() {
   // const [projectFilter, setProjectFilter] = useState("all");
   const [taskFilter, setTaskFilter] = useState("all");
   const taskModalRef = useRef(null);
+  const projectModalRef = useRef(null);
 
   const [projectFormData, setProjectFormData] = useState({
     name: "",
@@ -91,7 +92,6 @@ export default function Home() {
 
   function handleTaskFormChange(e) {
     const { name, value } = e.target;
-
     setTaskFormData({ ...taskFormData, [name]: value });
   }
 
@@ -428,6 +428,7 @@ export default function Home() {
       <div
         className={`modal fade ${isProjectModalOpen ? "show d-block" : ""}`}
         id="projectModal"
+        ref={projectModalRef}
         tabIndex="-1"
         aria-labelledby="projectModalLabel"
         aria-hidden="true"
@@ -447,9 +448,9 @@ export default function Home() {
               <button
                 type="button"
                 className="btn-close"
-                onClick={() => setIsProjectModalOpen(false)}
                 data-bs-dismiss="modal"
                 aria-label="Close"
+               onClick={() => setIsProjectModalOpen(false)}
               ></button>
             </div>
             <form onSubmit={handleProjectSubmit}>
@@ -484,6 +485,7 @@ export default function Home() {
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
+                   onClick={() => setIsProjectModalOpen(false)}
                 >
                   Cancel
                 </button>
@@ -499,7 +501,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {isProjectModalOpen && <div className="modal-backdrop fade show"></div>}
 
       {/* 2. TASK MODAL */}
       <div
@@ -510,8 +511,8 @@ export default function Home() {
         aria-labelledby="taskModalLabel"
         aria-hidden="true"
         style={{
-          display: isProjectModalOpen ? "block" : "none",
-          backgroundColor: isProjectModalOpen
+          display: isTaskModalOpen ? "block" : "none",
+          backgroundColor: isTaskModalOpen
             ? "rgba(0, 0, 0, 0.5)"
             : "transparent",
         }}
@@ -525,7 +526,7 @@ export default function Home() {
               <button
                 type="button"
                 className="btn-close"
-                data-bs-dismiss="modal"
+                data-bs-dismiss="modal"    
                 aria-label="Close"
               ></button>
             </div>
@@ -651,7 +652,7 @@ export default function Home() {
                     value={taskFormData.status}
                     onChange={handleTaskFormChange}
                     required
-                  >
+                  ><option value="">Select a status</option>
                     {statuses.map((s, idx) => (
                       <option key={idx} value={s}>
                         {s}

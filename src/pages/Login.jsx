@@ -85,6 +85,10 @@ export default function Login() {
       if (error.response) {
         console.log("Status:", error.response.status);
         console.log("Data:", error.response.data);
+        if(error.response.status === 404){
+          toast.error("Please create an account")
+          navigate("/signup")
+        }
       } else if (error.request) {
         console.log("Network error: Is the backend running?");
       } else {
